@@ -1,0 +1,88 @@
+name: pipeline
+
+# Hourly because scheduled workflows are sometimes delayed or skipped and the
+# sources update every 6 hours. A run with nothing new exits in about a minute.
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Rebuild even if the manifest is current
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pipeline
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Fetch the published feed
+        run: |
+          git clone --quiet --depth 1 --branch gh-pages "https://github.com/${GITHUB_REPOSITORY}.git" site || mkdir -p site
+          rm -rf site/.git
+
+      - name: Build
+        id: build
+        continue-on-error: true
+        env:
+          FORCE: ${{ inputs.force && '--force' || '' }}
+        run: python -m jetcalm_data.run --site site $FORCE
+
+      - name: Publish (single-commit gh-pages)
+        if: steps.build.outputs.changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          cd site
+          git init --quiet --initial-branch gh-pages
+          git config user.name "jetcalm-data pipeline"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit --quiet -m "Feed $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push --quiet --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
+          du -sh v1
+
+      # The committed calibration.json is the last-resort mapping. Refreshing it
+      # weekly also keeps the repository active (GitHub turns off schedules in
+      # repositories with no activity for 60 days).
+      - name: Refresh the committed calibration (weekly)
+        if: steps.build.outcome == 'success' && steps.build.outputs.changed == 'true'
+        run: |
+          python - <<'PY'
+          import json, shutil, sys
+          from datetime import datetime, timedelta, timezone
+          from jetcalm_data import calibrate, tiles
+          new = calibrate.load("site/v1/calibration.json")
+          old = json.load(open("calibration.json"))
+          age = datetime.now(timezone.utc) - tiles.parse_iso(old.get("updated", "2000-01-01T00:00:00Z"))
+          if "updated" in new and age > timedelta(days=7):
+              shutil.copy("site/v1/calibration.json", "calibration.json")
+              print("refreshed")
+          PY
+          if ! git diff --quiet -- calibration.json; then
+            git config user.name "jetcalm-data pipeline"
+            git config user.email "actions@users.noreply.github.com"
+            git commit --quiet -m "Refresh stored calibration" -- calibration.json
+            git push --quiet origin HEAD:main || echo "push skipped (main moved); next run retries"
+          fi
+
+      - name: Fail if a source failed
+        if: steps.build.outcome != 'success'
+        run: |
+          echo "::error::A source failed. See the Build step. The feed published is degraded or unchanged."
+          exit 1
