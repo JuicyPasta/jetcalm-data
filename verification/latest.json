@@ -1,77 +1,77 @@
 {
  "all": {
-  "agree": 225,
-  "agree_rate": 0.493,
+  "agree": 305,
+  "agree_rate": 0.491,
   "any_turbulence": {
-   "expected_light_or_more": 267,
-   "hit_rate": 0.72,
-   "reports": 371
+   "expected_light_or_more": 386,
+   "hit_rate": 0.748,
+   "reports": 516
   },
   "by_band": {
-   "cruise": 373,
-   "low": 83
+   "cruise": 485,
+   "low": 136
   },
   "by_kind": {
-   "wafs": 456
+   "wafs": 621
   },
   "confusion_could_reach": {
    "calm": {
-    "light": 28,
-    "light-moderate": 4,
-    "moderate": 10,
-    "none": 22,
+    "light": 39,
+    "light-moderate": 5,
+    "moderate": 11,
+    "none": 26,
     "severe": 0
    },
    "light": {
-    "light": 52,
-    "light-moderate": 14,
-    "moderate": 33,
-    "none": 38,
-    "severe": 0
+    "light": 83,
+    "light-moderate": 21,
+    "moderate": 46,
+    "none": 46,
+    "severe": 2
    },
    "moderate": {
-    "light": 62,
-    "light-moderate": 42,
-    "moderate": 83,
-    "none": 20,
-    "severe": 0
+    "light": 98,
+    "light-moderate": 51,
+    "moderate": 100,
+    "none": 28,
+    "severe": 1
    },
    "severe": {
     "light": 1,
-    "light-moderate": 1,
+    "light-moderate": 2,
     "moderate": 5,
     "none": 0,
     "severe": 0
    },
    "strong": {
-    "light": 5,
-    "light-moderate": 8,
-    "moderate": 23,
+    "light": 9,
+    "light-moderate": 12,
+    "moderate": 30,
     "none": 5,
     "severe": 0
    }
   },
   "confusion_expected": {
    "calm": {
-    "light": 59,
-    "light-moderate": 15,
-    "moderate": 30,
-    "none": 42,
+    "light": 78,
+    "light-moderate": 17,
+    "moderate": 35,
+    "none": 49,
     "severe": 0
    },
    "light": {
-    "light": 59,
-    "light-moderate": 28,
-    "moderate": 52,
-    "none": 31,
-    "severe": 0
+    "light": 98,
+    "light-moderate": 41,
+    "moderate": 68,
+    "none": 41,
+    "severe": 2
    },
    "moderate": {
-    "light": 28,
-    "light-moderate": 24,
-    "moderate": 67,
-    "none": 11,
-    "severe": 0
+    "light": 51,
+    "light-moderate": 28,
+    "moderate": 83,
+    "none": 14,
+    "severe": 1
    },
    "severe": {
     "light": 0,
@@ -81,58 +81,58 @@
     "severe": 0
    },
    "strong": {
-    "light": 2,
-    "light-moderate": 2,
-    "moderate": 5,
+    "light": 3,
+    "light-moderate": 5,
+    "moderate": 6,
     "none": 1,
     "severe": 0
    }
   },
   "median_lead_hours": 6.0,
   "moderate_or_greater": {
-   "could_reach_moderate_or_more": 111,
-   "expected_moderate_or_more": 72,
-   "hit_rate_could_reach": 0.721,
-   "hit_rate_expected": 0.468,
-   "reports": 154
+   "could_reach_moderate_or_more": 136,
+   "expected_moderate_or_more": 90,
+   "hit_rate_could_reach": 0.697,
+   "hit_rate_expected": 0.462,
+   "reports": 195
   },
-  "n": 456,
+  "n": 621,
   "per_reported": {
    "light": {
-    "agree": 59,
-    "n": 148,
-    "rate": 0.399
+    "agree": 98,
+    "n": 230,
+    "rate": 0.426
    },
    "light-moderate": {
-    "agree": 52,
-    "n": 69,
-    "rate": 0.754
+    "agree": 69,
+    "n": 91,
+    "rate": 0.758
    },
    "moderate": {
-    "agree": 72,
-    "n": 154,
-    "rate": 0.468
+    "agree": 89,
+    "n": 192,
+    "rate": 0.464
    },
    "none": {
-    "agree": 42,
-    "n": 85,
-    "rate": 0.494
+    "agree": 49,
+    "n": 105,
+    "rate": 0.467
    },
    "severe": {
     "agree": 0,
-    "n": 0,
-    "rate": null
+    "n": 3,
+    "rate": 0.0
    }
   },
   "smooth_reports": {
-   "calm_rate": 0.494,
-   "expected_calm": 42,
-   "expected_light_or_less": 73,
-   "light_or_less_rate": 0.859,
-   "reports": 85
+   "calm_rate": 0.467,
+   "expected_calm": 49,
+   "expected_light_or_less": 90,
+   "light_or_less_rate": 0.857,
+   "reports": 105
   },
-  "within_range": 306,
-  "within_range_rate": 0.671
+  "within_range": 402,
+  "within_range_rate": 0.647
  },
  "daily": {
   "2026-11-23": {
@@ -271,78 +271,78 @@
    "within_range_rate": 0.643
   },
   "2026-11-24": {
-   "agree": 171,
-   "agree_rate": 0.497,
+   "agree": 251,
+   "agree_rate": 0.493,
    "any_turbulence": {
-    "expected_light_or_more": 218,
-    "hit_rate": 0.752,
-    "reports": 290
+    "expected_light_or_more": 337,
+    "hit_rate": 0.775,
+    "reports": 435
    },
    "by_band": {
-    "cruise": 287,
-    "low": 57
+    "cruise": 399,
+    "low": 110
    },
    "by_kind": {
-    "wafs": 344
+    "wafs": 509
    },
    "confusion_could_reach": {
     "calm": {
-     "light": 16,
-     "light-moderate": 2,
-     "moderate": 10,
-     "none": 15,
+     "light": 27,
+     "light-moderate": 3,
+     "moderate": 11,
+     "none": 19,
      "severe": 0
     },
     "light": {
-     "light": 39,
-     "light-moderate": 11,
-     "moderate": 27,
-     "none": 20,
-     "severe": 0
+     "light": 70,
+     "light-moderate": 18,
+     "moderate": 40,
+     "none": 28,
+     "severe": 2
     },
     "moderate": {
-     "light": 44,
-     "light-moderate": 35,
-     "moderate": 72,
-     "none": 14,
-     "severe": 0
+     "light": 80,
+     "light-moderate": 44,
+     "moderate": 89,
+     "none": 22,
+     "severe": 1
     },
     "severe": {
      "light": 1,
-     "light-moderate": 1,
+     "light-moderate": 2,
      "moderate": 5,
      "none": 0,
      "severe": 0
     },
     "strong": {
-     "light": 4,
-     "light-moderate": 5,
-     "moderate": 18,
+     "light": 8,
+     "light-moderate": 9,
+     "moderate": 25,
      "none": 5,
      "severe": 0
     }
    },
    "confusion_expected": {
     "calm": {
-     "light": 35,
-     "light-moderate": 11,
-     "moderate": 26,
-     "none": 24,
+     "light": 54,
+     "light-moderate": 13,
+     "moderate": 31,
+     "none": 31,
      "severe": 0
     },
     "light": {
-     "light": 45,
-     "light-moderate": 23,
-     "moderate": 46,
-     "none": 20,
-     "severe": 0
+     "light": 84,
+     "light-moderate": 36,
+     "moderate": 62,
+     "none": 30,
+     "severe": 2
     },
     "moderate": {
-     "light": 23,
-     "light-moderate": 19,
-     "moderate": 55,
-     "none": 9,
-     "severe": 0
+     "light": 46,
+     "light-moderate": 23,
+     "moderate": 71,
+     "none": 12,
+     "severe": 1
     },
     "severe": {
      "light": 0,
@@ -352,135 +352,135 @@
      "severe": 0
     },
     "strong": {
-     "light": 1,
-     "light-moderate": 1,
-     "moderate": 5,
+     "light": 2,
+     "light-moderate": 4,
+     "moderate": 6,
      "none": 1,
      "severe": 0
     }
    },
-   "median_lead_hours": 9.0,
+   "median_lead_hours": 6.0,
    "moderate_or_greater": {
-    "could_reach_moderate_or_more": 95,
-    "expected_moderate_or_more": 60,
-    "hit_rate_could_reach": 0.72,
-    "hit_rate_expected": 0.455,
-    "reports": 132
+    "could_reach_moderate_or_more": 120,
+    "expected_moderate_or_more": 78,
+    "hit_rate_could_reach": 0.694,
+    "hit_rate_expected": 0.451,
+    "reports": 173
    },
-   "n": 344,
+   "n": 509,
    "per_reported": {
     "light": {
-     "agree": 45,
-     "n": 104,
-     "rate": 0.433
+     "agree": 84,
+     "n": 186,
+     "rate": 0.452
     },
     "light-moderate": {
-     "agree": 42,
-     "n": 54,
-     "rate": 0.778
+     "agree": 59,
+     "n": 76,
+     "rate": 0.776
     },
     "moderate": {
-     "agree": 60,
-     "n": 132,
-     "rate": 0.455
+     "agree": 77,
+     "n": 170,
+     "rate": 0.453
     },
     "none": {
-     "agree": 24,
-     "n": 54,
-     "rate": 0.444
+     "agree": 31,
+     "n": 74,
+     "rate": 0.419
     },
     "severe": {
      "agree": 0,
-     "n": 0,
-     "rate": null
+     "n": 3,
+     "rate": 0.0
     }
    },
    "smooth_reports": {
-    "calm_rate": 0.444,
-    "expected_calm": 24,
-    "expected_light_or_less": 44,
-    "light_or_less_rate": 0.815,
-    "reports": 54
+    "calm_rate": 0.419,
+    "expected_calm": 31,
+    "expected_light_or_less": 61,
+    "light_or_less_rate": 0.824,
+    "reports": 74
    },
-   "within_range": 234,
-   "within_range_rate": 0.68
+   "within_range": 330,
+   "within_range_rate": 0.648
   }
  },
  "first_report": "2026-11-23T22:30:00Z",
- "generated": "2026-11-24T10:17:11Z",
+ "generated": "2026-11-24T12:55:44Z",
  "last_30_days": {
-  "agree": 225,
-  "agree_rate": 0.493,
+  "agree": 305,
+  "agree_rate": 0.491,
   "any_turbulence": {
-   "expected_light_or_more": 267,
-   "hit_rate": 0.72,
-   "reports": 371
+   "expected_light_or_more": 386,
+   "hit_rate": 0.748,
+   "reports": 516
   },
   "by_band": {
-   "cruise": 373,
-   "low": 83
+   "cruise": 485,
+   "low": 136
   },
   "by_kind": {
-   "wafs": 456
+   "wafs": 621
   },
   "confusion_could_reach": {
    "calm": {
-    "light": 28,
-    "light-moderate": 4,
-    "moderate": 10,
-    "none": 22,
+    "light": 39,
+    "light-moderate": 5,
+    "moderate": 11,
+    "none": 26,
     "severe": 0
    },
    "light": {
-    "light": 52,
-    "light-moderate": 14,
-    "moderate": 33,
-    "none": 38,
-    "severe": 0
+    "light": 83,
+    "light-moderate": 21,
+    "moderate": 46,
+    "none": 46,
+    "severe": 2
    },
    "moderate": {
-    "light": 62,
-    "light-moderate": 42,
-    "moderate": 83,
-    "none": 20,
-    "severe": 0
+    "light": 98,
+    "light-moderate": 51,
+    "moderate": 100,
+    "none": 28,
+    "severe": 1
    },
    "severe": {
     "light": 1,
-    "light-moderate": 1,
+    "light-moderate": 2,
     "moderate": 5,
     "none": 0,
     "severe": 0
    },
    "strong": {
-    "light": 5,
-    "light-moderate": 8,
-    "moderate": 23,
+    "light": 9,
+    "light-moderate": 12,
+    "moderate": 30,
     "none": 5,
     "severe": 0
    }
   },
   "confusion_expected": {
    "calm": {
-    "light": 59,
-    "light-moderate": 15,
-    "moderate": 30,
-    "none": 42,
+    "light": 78,
+    "light-moderate": 17,
+    "moderate": 35,
+    "none": 49,
     "severe": 0
    },
    "light": {
-    "light": 59,
-    "light-moderate": 28,
-    "moderate": 52,
-    "none": 31,
-    "severe": 0
+    "light": 98,
+    "light-moderate": 41,
+    "moderate": 68,
+    "none": 41,
+    "severe": 2
    },
    "moderate": {
-    "light": 28,
-    "light-moderate": 24,
-    "moderate": 67,
-    "none": 11,
-    "severe": 0
+    "light": 51,
+    "light-moderate": 28,
+    "moderate": 83,
+    "none": 14,
+    "severe": 1
    },
    "severe": {
     "light": 0,
@@ -490,132 +490,132 @@
     "severe": 0
    },
    "strong": {
-    "light": 2,
-    "light-moderate": 2,
-    "moderate": 5,
+    "light": 3,
+    "light-moderate": 5,
+    "moderate": 6,
     "none": 1,
     "severe": 0
    }
   },
   "median_lead_hours": 6.0,
   "moderate_or_greater": {
-   "could_reach_moderate_or_more": 111,
-   "expected_moderate_or_more": 72,
-   "hit_rate_could_reach": 0.721,
-   "hit_rate_expected": 0.468,
-   "reports": 154
+   "could_reach_moderate_or_more": 136,
+   "expected_moderate_or_more": 90,
+   "hit_rate_could_reach": 0.697,
+   "hit_rate_expected": 0.462,
+   "reports": 195
   },
-  "n": 456,
+  "n": 621,
   "per_reported": {
    "light": {
-    "agree": 59,
-    "n": 148,
-    "rate": 0.399
+    "agree": 98,
+    "n": 230,
+    "rate": 0.426
    },
    "light-moderate": {
-    "agree": 52,
-    "n": 69,
-    "rate": 0.754
+    "agree": 69,
+    "n": 91,
+    "rate": 0.758
    },
    "moderate": {
-    "agree": 72,
-    "n": 154,
-    "rate": 0.468
+    "agree": 89,
+    "n": 192,
+    "rate": 0.464
    },
    "none": {
-    "agree": 42,
-    "n": 85,
-    "rate": 0.494
+    "agree": 49,
+    "n": 105,
+    "rate": 0.467
    },
    "severe": {
     "agree": 0,
-    "n": 0,
-    "rate": null
+    "n": 3,
+    "rate": 0.0
    }
   },
   "smooth_reports": {
-   "calm_rate": 0.494,
-   "expected_calm": 42,
-   "expected_light_or_less": 73,
-   "light_or_less_rate": 0.859,
-   "reports": 85
+   "calm_rate": 0.467,
+   "expected_calm": 49,
+   "expected_light_or_less": 90,
+   "light_or_less_rate": 0.857,
+   "reports": 105
   },
-  "within_range": 306,
-  "within_range_rate": 0.671
+  "within_range": 402,
+  "within_range_rate": 0.647
  },
  "last_7_days": {
-  "agree": 225,
-  "agree_rate": 0.493,
+  "agree": 305,
+  "agree_rate": 0.491,
   "any_turbulence": {
-   "expected_light_or_more": 267,
-   "hit_rate": 0.72,
-   "reports": 371
+   "expected_light_or_more": 386,
+   "hit_rate": 0.748,
+   "reports": 516
   },
   "by_band": {
-   "cruise": 373,
-   "low": 83
+   "cruise": 485,
+   "low": 136
   },
   "by_kind": {
-   "wafs": 456
+   "wafs": 621
   },
   "confusion_could_reach": {
    "calm": {
-    "light": 28,
-    "light-moderate": 4,
-    "moderate": 10,
-    "none": 22,
+    "light": 39,
+    "light-moderate": 5,
+    "moderate": 11,
+    "none": 26,
     "severe": 0
    },
    "light": {
-    "light": 52,
-    "light-moderate": 14,
-    "moderate": 33,
-    "none": 38,
-    "severe": 0
+    "light": 83,
+    "light-moderate": 21,
+    "moderate": 46,
+    "none": 46,
+    "severe": 2
    },
    "moderate": {
-    "light": 62,
-    "light-moderate": 42,
-    "moderate": 83,
-    "none": 20,
-    "severe": 0
+    "light": 98,
+    "light-moderate": 51,
+    "moderate": 100,
+    "none": 28,
+    "severe": 1
    },
    "severe": {
     "light": 1,
-    "light-moderate": 1,
+    "light-moderate": 2,
     "moderate": 5,
     "none": 0,
     "severe": 0
    },
    "strong": {
-    "light": 5,
-    "light-moderate": 8,
-    "moderate": 23,
+    "light": 9,
+    "light-moderate": 12,
+    "moderate": 30,
     "none": 5,
     "severe": 0
    }
   },
   "confusion_expected": {
    "calm": {
-    "light": 59,
-    "light-moderate": 15,
-    "moderate": 30,
-    "none": 42,
+    "light": 78,
+    "light-moderate": 17,
+    "moderate": 35,
+    "none": 49,
     "severe": 0
    },
    "light": {
-    "light": 59,
-    "light-moderate": 28,
-    "moderate": 52,
-    "none": 31,
-    "severe": 0
+    "light": 98,
+    "light-moderate": 41,
+    "moderate": 68,
+    "none": 41,
+    "severe": 2
    },
    "moderate": {
-    "light": 28,
-    "light-moderate": 24,
-    "moderate": 67,
-    "none": 11,
-    "severe": 0
+    "light": 51,
+    "light-moderate": 28,
+    "moderate": 83,
+    "none": 14,
+    "severe": 1
    },
    "severe": {
     "light": 0,
@@ -625,73 +625,73 @@
     "severe": 0
    },
    "strong": {
-    "light": 2,
-    "light-moderate": 2,
-    "moderate": 5,
+    "light": 3,
+    "light-moderate": 5,
+    "moderate": 6,
     "none": 1,
     "severe": 0
    }
   },
   "median_lead_hours": 6.0,
   "moderate_or_greater": {
-   "could_reach_moderate_or_more": 111,
-   "expected_moderate_or_more": 72,
-   "hit_rate_could_reach": 0.721,
-   "hit_rate_expected": 0.468,
-   "reports": 154
+   "could_reach_moderate_or_more": 136,
+   "expected_moderate_or_more": 90,
+   "hit_rate_could_reach": 0.697,
+   "hit_rate_expected": 0.462,
+   "reports": 195
   },
-  "n": 456,
+  "n": 621,
   "per_reported": {
    "light": {
-    "agree": 59,
-    "n": 148,
-    "rate": 0.399
+    "agree": 98,
+    "n": 230,
+    "rate": 0.426
    },
    "light-moderate": {
-    "agree": 52,
-    "n": 69,
-    "rate": 0.754
+    "agree": 69,
+    "n": 91,
+    "rate": 0.758
    },
    "moderate": {
-    "agree": 72,
-    "n": 154,
-    "rate": 0.468
+    "agree": 89,
+    "n": 192,
+    "rate": 0.464
    },
    "none": {
-    "agree": 42,
-    "n": 85,
-    "rate": 0.494
+    "agree": 49,
+    "n": 105,
+    "rate": 0.467
    },
    "severe": {
     "agree": 0,
-    "n": 0,
-    "rate": null
+    "n": 3,
+    "rate": 0.0
    }
   },
   "smooth_reports": {
-   "calm_rate": 0.494,
-   "expected_calm": 42,
-   "expected_light_or_less": 73,
-   "light_or_less_rate": 0.859,
-   "reports": 85
+   "calm_rate": 0.467,
+   "expected_calm": 49,
+   "expected_light_or_less": 90,
+   "light_or_less_rate": 0.857,
+   "reports": 105
   },
-  "within_range": 306,
-  "within_range_rate": 0.671
+  "within_range": 402,
+  "within_range_rate": 0.647
  },
- "last_report": "2026-11-24T10:11:00Z",
+ "last_report": "2026-11-24T12:51:00Z",
  "last_run": {
-  "at": "2026-11-24T10:17:11Z",
+  "at": "2026-11-24T12:55:44Z",
   "dropped": {
-   "below FL130 or above FL450": 182,
-   "no turbulence": 2355
+   "below FL130 or above FL450": 146,
+   "no turbulence": 2135
   },
-  "matched": 455,
-  "new": 1,
+  "matched": 258,
+  "new": 165,
   "not_matched": {
-   "no forecast step published for that time": 211
+   "no forecast step published for that time": 321
   },
-  "reports": 3203,
-  "usable": 666
+  "reports": 2860,
+  "usable": 579
  },
  "method": "docs/verification.md",
  "source": "NOAA/NWS Aviation Weather Center pilot reports (aviationweather.gov/api/data/pirep)",
