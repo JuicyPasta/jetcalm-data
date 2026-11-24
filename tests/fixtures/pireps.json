@@ -1,0 +1,12 @@
+[
+ {"obsTime": 1795514700, "lat": 28.0, "lon": -138.55, "fltLvl": 350, "fltLvlType": "OTHER", "acType": "B38M", "pirepType": "PIREP", "tbInt1": "NEG", "tbInt2": "", "rawOb": "KLAX UA /OV 2800N 13833W/TM 0945/FL350/TP B38M/TB NEG"},
+ {"obsTime": 1795514700, "lat": 36.13, "lon": 145.47, "fltLvl": 370, "fltLvlType": "OTHER", "acType": "UAL33", "pirepType": "AIREP", "tbInt1": "LGT", "tbInt2": "", "rawOb": "ARP UAL33 3608N 14528E 0945 F370 TB LGT CHOP"},
+ {"obsTime": 1795514700, "lat": 39.9, "lon": -105.1, "fltLvl": 260, "fltLvlType": "OTHER", "acType": "BE20", "pirepType": "PIREP", "tbInt1": "LGT-MOD", "tbInt2": "", "rawOb": "BJC UA /OV BJC296023/TM 0945/FL260/TP BE20/TB OCNL LGT-MOD"},
+ {"obsTime": 1795514700, "lat": 43.75, "lon": -128.73, "fltLvl": 360, "fltLvlType": "OTHER", "acType": "A359", "pirepType": "PIREP", "tbInt1": "LGT", "tbInt2": "MOD", "rawOb": "RNO UA /OV 4345N12844W/TM 0945/FL360/TP A359/TB LGT-MOD"},
+ {"obsTime": 1795514700, "lat": 40.0, "lon": -80.0, "fltLvl": 340, "fltLvlType": "OTHER", "acType": "B739", "pirepType": "Urgent PIREP", "tbInt1": "SEV", "tbInt2": "", "rawOb": "PIT UUA /OV 4000N08000W/TM 0945/FL340/TP B739/TB SEV"},
+ {"obsTime": 1795514700, "lat": 28.5, "lon": -81.3, "fltLvl": 80, "fltLvlType": "OTHER", "acType": "B767", "pirepType": "PIREP", "tbInt1": "MOD", "tbInt2": "", "rawOb": "MCO UA /OV MCO330010/TM 0945/FL080/TP B767/TB MODERATE CHOP"},
+ {"obsTime": 1795514700, "lat": 52.25, "lon": -13.77, "fltLvl": 360, "fltLvlType": "OTHER", "acType": "DAL47", "pirepType": "AIREP", "tbInt1": "", "tbInt2": "", "rawOb": "ARP DAL47 5215N01346W 0945 F360"},
+ {"obsTime": 1795514700, "lat": 40.0, "lon": -100.0, "fltLvl": null, "fltLvlType": "UNKN", "acType": "C172", "pirepType": "PIREP", "tbInt1": "LGT", "tbInt2": "", "rawOb": "UA /OV 4000N10000W/TM 0945/FLUNKN/TP C172/TB LGT"},
+ {"obsTime": 1795514700, "lat": 80.0, "lon": 10.0, "fltLvl": 380, "fltLvlType": "OTHER", "acType": "B77W", "pirepType": "AIREP", "tbInt1": "MOD", "tbInt2": "", "rawOb": "ARP 8000N01000E 0945 F380 TB MOD"},
+ {"obsTime": 1795400000, "lat": 40.0, "lon": -80.0, "fltLvl": 340, "fltLvlType": "OTHER", "acType": "B739", "pirepType": "PIREP", "tbInt1": "MOD", "tbInt2": "", "rawOb": "an old report before any published step"}
+]
