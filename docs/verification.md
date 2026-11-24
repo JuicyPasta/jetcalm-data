@@ -34,8 +34,8 @@ Rewritten on every run from `verification/matches/` (the newest 60 days).
 | Day (UTC) | Reports matched | Forecast agreed | Within expected–could-reach | Moderate+ reports: forecast moderate+ (expected / could reach) | Smooth reports: forecast calm |
 |---|---|---|---|---|---|
 | 2026-11-23 | 112 | 48% | 64% | 55% / 73% of 22 | 58% of 31 |
-| 2026-11-24 | 343 | 50% | 68% | 46% / 72% of 131 | 44% of 54 |
-| **last 30 days** | 455 | 50% | 67% | 47% / 72% of 153 | 49% of 85 |
+| 2026-11-24 | 344 | 50% | 68% | 46% / 72% of 132 | 44% of 54 |
+| **last 30 days** | 456 | 49% | 67% | 47% / 72% of 154 | 49% of 85 |
 <!-- daily-table:end -->
 
 ## Log
