@@ -88,7 +88,7 @@ GitHub Pages may serve the `.bin.gz` as `application/gzip` with no `Content-Enco
 | `grid` | object | As above; constant in v1 |
 | `steps` | array, rising `valid` | `valid` (UTC time the step is for), `kind` (`wafs` or `outlook`), `file`, `layers` (the order inside the file), `bytes` (gzipped size) |
 | `thresholds` | object | Lower bounds on the byte value: `light ≤ v < moderate` is light, and so on; under `light` is smooth. Read them from here so they can be tuned without an app release |
-| `min_build` | int | The oldest app build that can read this feed. An older build should ask for an update instead of showing a forecast |
+| `min_build` | int | The oldest app build that can read this feed. An older build should ask for an update instead of showing a forecast **Keep it ≤ 3 until a build after iOS 1.0.1 (4) is live:** that build reports its build as 3 internally (`AppIdentity.build`, fixed on the app's main 2026-11-24), so a higher value would show its users an "update the app" banner. |
 | `notice` | object, optional | A service message: language code → text, `en` always present |
 | `problems` | array, optional | For operators: which source failed and why. Clients can ignore it |
 
