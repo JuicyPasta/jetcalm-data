@@ -33,6 +33,7 @@ The pipeline is polite to both: it identifies itself (`User-Agent: jetcalm-data/
 | [`staleness`](.github/workflows/monitor.yml) | Every 3 hours | Fails if the published manifest is older than 12 hours or a step file can't be read |
 | [`tests`](.github/workflows/tests.yml) | On every push | `pytest` |
 | [`verify`](.github/workflows/verify.yml) | Every 6 hours at :53 | Scores the published forecast against pilot reports from the Aviation Weather Center and commits the results to [`verification/`](verification/) and [`docs/verification.md`](docs/verification.md) (about a minute; the commit is `[skip ci]`) |
+| [`reports`](.github/workflows/reports.yml) | Hourly at :17, or by hand | Writes the last 3 hours of pilot turbulence reports (smooth ones included, any altitude; aircraft type only, no call signs) to [`reports/latest.json`](reports/latest.json) on `main` for the free [turbulence tracker](https://juicypasta.github.io/jetcalm/turbulence-tracker/), which reads it from `raw.githubusercontent.com` because the AWC API sends no CORS header (about a minute; the commit is `[skip ci]`) |
 
 If the WAFS step fails (images moved, palette changed, server down), the run publishes a GFS-only feed that still covers 6–120 hours, using the last stored calibration (`v1/calibration.json`, with the committed [`calibration.json`](calibration.json) as the last resort), and the workflow ends red. The manifest then has `"wafs_run": null` and a `problems` entry.
 
@@ -47,6 +48,7 @@ python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m jetcalm_data.sample JFK LHR 2026-11-23T23:00:00Z   # reads the published feed
 .venv/bin/python -m jetcalm_data.monitor
 .venv/bin/python -m jetcalm_data.verify --site site/v1  # scores the feed in site/v1 against pilot reports
+.venv/bin/python -m jetcalm_data.reports                # writes reports/latest.json
 ```
 
 ## Layout
@@ -61,5 +63,6 @@ python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
 | `jetcalm_data/run.py` | One pipeline run |
 | `jetcalm_data/sample.py`, `monitor.py` | Reference reader; staleness check |
 | `jetcalm_data/verify.py` | Forecast vs pilot reports ([docs/verification.md](docs/verification.md)) |
+| `jetcalm_data/reports.py` | The latest pilot reports for the web tracker (reuses `verify`'s fetcher and parser) |
 | `docs/thresholds.md` | The level thresholds checked against ICAO Annex 3, AWC and NCAR |
 | `tests/fixtures/` | AWC images of the 2026-11-22 12Z run (F12) and the tile the original proof made from them |

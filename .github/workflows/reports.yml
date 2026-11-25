@@ -1,0 +1,45 @@
+name: reports
+
+# The last 3 hours of pilot turbulence reports for the web tracker
+# (juicypasta.github.io/jetcalm/turbulence-tracker/), written to
+# reports/latest.json on main and read from raw.githubusercontent.com (the AWC
+# API sends no CORS header). Hourly, about a minute; the commit says
+# [skip ci], so it starts no other workflow. Doesn't touch gh-pages.
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reports
+  cancel-in-progress: false
+
+jobs:
+  reports:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet "numpy>=2.0,<3" "requests>=2.31"
+
+      - name: Fetch the reports
+        run: python -m jetcalm_data.reports --out reports/latest.json --hours 3
+
+      - name: Commit
+        run: |
+          git config user.name "jetcalm-data reports"
+          git config user.email "actions@users.noreply.github.com"
+          git add reports
+          if git diff --cached --quiet; then echo "nothing new"; exit 0; fi
+          git commit --quiet -m "Pilot reports $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+          for i in 1 2 3; do
+            git pull --quiet --rebase origin main && git push --quiet origin HEAD:main && exit 0
+            sleep 10
+          done
+          echo "::error::push failed"; exit 1

@@ -75,8 +75,9 @@ def reported_category(d):
     return max(cats, key=REPORTED.index) if cats else None
 
 
-def parse_report(d):
-    """One API record -> a compact report, or (None, reason)."""
+def parse_report(d, fl_min=FL_LOW, fl_max=FL_TOP):
+    """One API record -> a compact report, or (None, reason). Scoring keeps FL130-450 (the
+    feed's levels); the live tracker (reports.py) passes a wider range."""
     cat = reported_category(d)
     if cat is None:
         return None, "no turbulence"
@@ -86,8 +87,8 @@ def parse_report(d):
         lat, lon, t = float(d["lat"]), float(d["lon"]), int(d["obsTime"])
     except (TypeError, ValueError, KeyError):
         return None, "no position, time or level"
-    if not FL_LOW <= fl <= FL_TOP:
-        return None, "below FL130 or above FL450"
+    if not fl_min <= fl <= fl_max:
+        return None, f"below FL{fl_min:03d} or above FL{fl_max}"
     when = datetime.fromtimestamp(t, timezone.utc)
     raw = " ".join(i for i in ((d.get("tbInt1") or "").strip(), (d.get("tbInt2") or "").strip()) if i)
     ac = (d.get("acType") or "").strip()
