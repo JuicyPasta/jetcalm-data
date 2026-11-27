@@ -43,8 +43,15 @@ jobs:
           FORCE: ${{ inputs.force && '--force' || '' }}
         run: python -m jetcalm_data.run --site site $FORCE
 
+      # Flight number -> airports, rebuilt about once a day (FLIGHTS.md).
+      # Its own step so a failure here never holds back a forecast.
+      - name: Flight numbers (daily)
+        id: flights
+        continue-on-error: true
+        run: python -m jetcalm_data.flights --site site
+
       - name: Publish (single-commit gh-pages)
-        if: steps.build.outputs.changed == 'true'
+        if: steps.build.outputs.changed == 'true' || steps.flights.outputs.changed == 'true'
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
@@ -82,7 +89,12 @@ jobs:
           fi
 
       - name: Fail if a source failed
-        if: steps.build.outcome != 'success'
+        if: steps.build.outcome != 'success' || steps.flights.outcome != 'success'
         run: |
-          echo "::error::A source failed. See the Build step. The feed published is degraded or unchanged."
+          if [ "${{ steps.build.outcome }}" != "success" ]; then
+            echo "::error::A forecast source failed. See the Build step. The feed published is degraded or unchanged."
+          fi
+          if [ "${{ steps.flights.outcome }}" != "success" ]; then
+            echo "::error::The flight-number table failed. See the Flight numbers step. The published table is unchanged."
+          fi
           exit 1

@@ -1,4 +1,5 @@
-"""Staleness check: fail if the published feed is older than 12 hours.
+"""Staleness check: fail if the published feed is older than 12 hours, or the
+flight-number table (flights/v1/index.json) older than 72 hours.
 
 usage: python -m jetcalm_data.monitor [base URL]
 """
@@ -6,9 +7,10 @@ import json
 import sys
 from datetime import datetime, timezone
 
-from . import http, tiles
+from . import flights, http, tiles
 
 BASE = "https://juicypasta.github.io/jetcalm-data/v1/"
+FLIGHTS_INDEX = "https://juicypasta.github.io/jetcalm-data/flights/v1/index.json"
 MAX_AGE_HOURS = 12
 
 
@@ -39,6 +41,13 @@ def main(argv=None):
             tiles.decode(http.get(base + step["file"]), step["layers"])
         except Exception as e:
             problems.append(f"step file {step['file']} is not readable: {e}")
+    try:
+        index = json.loads(http.get(FLIGHTS_INDEX + f"?t={int(now.timestamp())}"))
+        problems += flights.check(index, now)
+        print(f"flight numbers: generated {index.get('generated')}, {index.get('flights')} flights, "
+              f"{len(index.get('airlines', {}))} airlines")
+    except Exception as e:
+        problems.append(f"flights index is not readable: {e}")
     for p in problems:
         print("PROBLEM:", p)
     if manifest.get("problems"):

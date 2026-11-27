@@ -9,6 +9,13 @@ https://juicypasta.github.io/jetcalm-data/v1/<run>/f<hhh>.bin.gz
 
 The file format is in [FORMAT.md](FORMAT.md).
 
+Once a day it also publishes a flight-number table for the app's flight-number box (`BA 117` → London Heathrow → New York JFK), described in [FLIGHTS.md](FLIGHTS.md):
+
+```
+https://juicypasta.github.io/jetcalm-data/flights/v1/index.json
+https://juicypasta.github.io/jetcalm-data/flights/v1/<airline>.json
+```
+
 ## Data sources
 
 | Source | Used for | How |
@@ -18,19 +25,22 @@ The file format is in [FORMAT.md](FORMAT.md).
 
 The pipeline is polite to both: it identifies itself (`User-Agent: jetcalm-data/1.0 (+https://github.com/JuicyPasta/jetcalm-data)`), reuses one connection, fetches one file at a time, retries with backoff, and downloads a run once (about 125 small images and 60 MB of GFS fields per run, at most 8 times a day).
 
+| **Virtual Radar Server standing data** (https://github.com/vradarserver/standing-data, CC0 1.0) | Flight number → the airports it usually flies | Cloned once a day with two years of history; numeric call signs of airlines that added a new one in the last two years ([FLIGHTS.md](FLIGHTS.md)) |
+
 ## Licence and credit
 
 - The forecasts are works of the United States Government and are in the public domain (17 U.S.C. §105). **Credit: NOAA/NWS Aviation Weather Center and NCEP.**
 - Jetcalm and this repository are **not affiliated with or endorsed by NOAA**, the National Weather Service or the Aviation Weather Center.
 - These files are for passenger information. They are **not for flight planning or navigation**.
+- The flight-number table is built from Virtual Radar Server's standing data, which its author released under CC0 1.0. It is crowd-sourced and can be out of date: the app shows a route as the one a flight number "usually" flies and lets the person change it.
 - The code in this repository is released under the MIT licence ([LICENSE](LICENSE)).
 
 ## How it runs
 
 | Workflow | When | What |
 |---|---|---|
-| [`pipeline`](.github/workflows/pipeline.yml) | Hourly at :23, or by hand | Finds the newest complete WAFS run and GFS cycle. If `manifest.json` already names both, it stops. Otherwise it builds the step files and the manifest, keeps the two newest builds, and force-pushes the result as a single commit to `gh-pages` |
-| [`staleness`](.github/workflows/monitor.yml) | Every 3 hours | Fails if the published manifest is older than 12 hours or a step file can't be read |
+| [`pipeline`](.github/workflows/pipeline.yml) | Hourly at :23, or by hand | Finds the newest complete WAFS run and GFS cycle. If `manifest.json` already names both, it stops. Otherwise it builds the step files and the manifest, keeps the two newest builds, and force-pushes the result as a single commit to `gh-pages`. A second step rebuilds the flight-number table about once a day (after the source's daily update, around 04:50 UTC) and publishes it the same way |
+| [`staleness`](.github/workflows/monitor.yml) | Every 3 hours | Fails if the published manifest is older than 12 hours, a step file can't be read, or the flight-number table is older than 72 hours |
 | [`tests`](.github/workflows/tests.yml) | On every push | `pytest` |
 | [`verify`](.github/workflows/verify.yml) | Every 6 hours at :53 | Scores the published forecast against pilot reports from the Aviation Weather Center and commits the results to [`verification/`](verification/) and [`docs/verification.md`](docs/verification.md) (about a minute; the commit is `[skip ci]`) |
 | [`reports`](.github/workflows/reports.yml) | Hourly at :17, or by hand | Writes the last 3 hours of pilot turbulence reports (smooth ones included, any altitude; aircraft type only, no call signs) to [`reports/latest.json`](reports/latest.json) on `main` for the free [turbulence tracker](https://juicypasta.github.io/jetcalm/turbulence-tracker/), which reads it from `raw.githubusercontent.com` because the AWC API sends no CORS header (about a minute; the commit is `[skip ci]`) |
@@ -47,6 +57,8 @@ python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m jetcalm_data.run --site site          # builds site/v1
 .venv/bin/python -m jetcalm_data.sample JFK LHR 2026-11-23T23:00:00Z   # reads the published feed
 .venv/bin/python -m jetcalm_data.monitor
+.venv/bin/python -m jetcalm_data.flights --site site                # builds site/flights/v1 (clones the source)
+.venv/bin/python -m jetcalm_data.flights --site site --lookup "BA 117"
 .venv/bin/python -m jetcalm_data.verify --site site/v1  # scores the feed in site/v1 against pilot reports
 .venv/bin/python -m jetcalm_data.reports                # writes reports/latest.json
 ```
@@ -61,6 +73,7 @@ python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
 | `jetcalm_data/calibrate.py` | Quantile mapping TI1 → EDR |
 | `jetcalm_data/tiles.py` | Step-file encoding and the manifest schema |
 | `jetcalm_data/run.py` | One pipeline run |
+| `jetcalm_data/flights.py` | The flight-number table ([FLIGHTS.md](FLIGHTS.md)) and its reference lookup |
 | `jetcalm_data/sample.py`, `monitor.py` | Reference reader; staleness check |
 | `jetcalm_data/verify.py` | Forecast vs pilot reports ([docs/verification.md](docs/verification.md)) |
 | `jetcalm_data/reports.py` | The latest pilot reports for the web tracker (reuses `verify`'s fetcher and parser) |

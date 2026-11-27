@@ -4,6 +4,8 @@ Base URL: `https://juicypasta.github.io/jetcalm-data/v1/`
 
 A client needs two things: `manifest.json`, then the step files it names. A reference reader in Python is `jetcalm_data/sample.py`.
 
+The flight-number table under `flights/v1/` has its own format: [FLIGHTS.md](FLIGHTS.md).
+
 ## Grid
 
 | | |
