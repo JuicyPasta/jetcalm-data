@@ -1,5 +1,7 @@
 # jetcalm-data
 
+Free web tools built on this data: the [turbulence forecast for your flight](https://juicypasta.github.io/jetcalm/turbulence-forecast/), the [turbulence map](https://juicypasta.github.io/jetcalm/turbulence-map/) and the [turbulence tracker](https://juicypasta.github.io/jetcalm/turbulence-tracker/) (latest pilot reports).
+
 The data pipeline behind **Jetcalm**, a turbulence-forecast app. Every hour it checks NOAA for a new forecast run and, when there is one, turns it into small files the app downloads:
 
 ```
